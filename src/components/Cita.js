@@ -1,5 +1,6 @@
 import React, { Fragment, useState} from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 const Cita = ({cita, i, eliminarCita, traerCitas}) => {
      const {name, propietario, fecha, hora, description, _id} = cita;
 
@@ -129,5 +130,10 @@ const Cita = ({cita, i, eliminarCita, traerCitas}) => {
 
      );
 }
- 
+Cita.propTypes = {
+     cita: PropTypes.object.isRequired,
+     i: PropTypes.number.isRequired,
+     eliminarCita: PropTypes.func.isRequired,
+     traerCitas: PropTypes.func.isRequired
+}
 export default Cita;

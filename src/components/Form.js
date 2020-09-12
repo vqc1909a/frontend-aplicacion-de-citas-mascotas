@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 const Form = ({title, agregarCita}) => {
 
      const [cita, changeCita] = useState({
@@ -89,5 +91,8 @@ const Form = ({title, agregarCita}) => {
           </div>
      );
 }
- 
+Form.propTypes = {
+     title: PropTypes.string.isRequired,
+     agregarCita: PropTypes.func.isRequired
+}
 export default Form;

@@ -5,6 +5,20 @@ import Citas from './components/Citas';
 import axios from 'axios';
 
 function App() {
+  //! Trabajando con local storage;
+  // let citasiniciales = JSON.parse(localStorage.getitem('citas'));
+  // if(!citasiniciales){
+  //   citasiniciales = [];
+  // }
+  // const [citas, changeCitas] = useState(citasiniciales); 
+  // useEffect(()=>{
+  //   if(citasiniciales.length !== 0){
+  //     localStorage.setItem('citas', JSON.stringify(citas));
+  //   }else{
+  //     localStorage.setItem('citas', JSON.stringify([]));
+  //   }
+  // }, [citas])
+
   const [citas, changeCitas] = useState([]);
 
   const agregarCita = (cita) => {

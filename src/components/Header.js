@@ -1,7 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 const Header = ({title}) => {
-
-     
      return (
           <header className="header py-3 justify-content-center">
                <div className="container">
@@ -13,6 +12,9 @@ const Header = ({title}) => {
                </div>
           </header>
      );
+}
+Header.propTypes = {
+     title: PropTypes.string.isRequired
 }
  
 export default Header;

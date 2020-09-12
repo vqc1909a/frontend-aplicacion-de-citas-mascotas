@@ -1,6 +1,8 @@
 import React from 'react';
 import Cita from '../components/Cita';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import PropTypes from 'prop-types';
+
 const Citas = ({title, citas, eliminarCita, traerCitas}) => {
      return (
           <div className="col-md-6 text-white">
@@ -20,5 +22,10 @@ const Citas = ({title, citas, eliminarCita, traerCitas}) => {
           </div>
      );
 }
- 
+Citas.propTypes = {
+     title: PropTypes.string.isRequired,
+     citas: PropTypes.array.isRequired,
+     eliminarCita: PropTypes.func.isRequired,
+     traerCitas: PropTypes.func.isRequired
+}
 export default Citas;
