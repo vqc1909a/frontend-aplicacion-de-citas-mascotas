@@ -1,3 +1,24 @@
 body{
      background: linear-gradient(to right, #ff4b1f, #ff9068);
 }
+.fas, .far{
+     cursor: pointer;
+}
+
+.cita-enter {
+  transform: translatex(-200%);
+}
+.cita-enter-active {
+  transform: translatex(0%);
+  transition: transform 1000ms;
+}
+// Esto no es necesario xq es cuando se desmonta el componente, 
+//lo cual no se ve comunmente
+.cita-exit {
+  transform: translateX(0%);
+}
+
+.cita-exit-active {
+  transform: translateX(200%);
+  transition: transform 1000ms;
+}

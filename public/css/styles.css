@@ -1,5 +1,11 @@
-body {
-  background: -webkit-gradient(linear, left top, right top, from(#ff4b1f), to(#ff9068));
-  background: -webkit-linear-gradient(left, #ff4b1f, #ff9068);
-  background: -o-linear-gradient(left, #ff4b1f, #ff9068);
-  background: linear-gradient(to right, #ff4b1f, #ff9068); }
+body { background: -webkit-gradient(linear, left top, right top, from(#ff4b1f), to(#ff9068)); background: -webkit-linear-gradient(left, #ff4b1f, #ff9068); background: -o-linear-gradient(left, #ff4b1f, #ff9068); background: linear-gradient(to right, #ff4b1f, #ff9068); }
+
+.fas, .far { cursor: pointer; }
+
+.cita-enter { -webkit-transform: translatex(-200%); -ms-transform: translatex(-200%); transform: translatex(-200%); }
+
+.cita-enter-active { -webkit-transform: translatex(0%); -ms-transform: translatex(0%); transform: translatex(0%); -webkit-transition: -webkit-transform 1000ms; transition: -webkit-transform 1000ms; -o-transition: transform 1000ms; transition: transform 1000ms; transition: transform 1000ms, -webkit-transform 1000ms; }
+
+.cita-exit { -webkit-transform: translateX(0%); -ms-transform: translateX(0%); transform: translateX(0%); }
+
+.cita-exit-active { -webkit-transform: translateX(200%); -ms-transform: translateX(200%); transform: translateX(200%); -webkit-transition: -webkit-transform 1000ms; transition: -webkit-transform 1000ms; -o-transition: transform 1000ms; transition: transform 1000ms; transition: transform 1000ms, -webkit-transform 1000ms; }

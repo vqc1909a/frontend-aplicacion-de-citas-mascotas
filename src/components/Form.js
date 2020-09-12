@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-const Form = ({title}) => {
+import axios from 'axios';
+const Form = ({title, agregarCita}) => {
 
      const [cita, changeCita] = useState({
           name: '',
@@ -28,15 +29,30 @@ const Form = ({title}) => {
                })
                return null;
           }
-           changeCita({
-               name: '',
-               propietario: '',
-               fecha: '',
-               hora: '',
-               description: '',
-               error: "",
-               success: "Cita Agregada"
-           })  
+          crearCita(cita, agregarCita);
+     }
+     const crearCita = async (cita, agregarCita) => {
+          try{
+               const { data } = await axios.post(process.env.REACT_APP_BACKEND_URL+ '/citas', cita);
+               //! Solo iria esto si trabajas con react nmas
+               agregarCita(cita);
+               //!-------------------
+               changeCita({
+                 name: "",
+                 propietario: "",
+                 fecha: "",
+                 hora: "",
+                 description: "",
+                 error: "",
+                 success: data.message,
+               });  
+          }catch(err){
+               const { data } = err.response;
+               changeCita({
+                 ...cita,
+                 error: data.message,
+               });  
+          }
      }
      return (
            <div className="col-md-6 text-white">
