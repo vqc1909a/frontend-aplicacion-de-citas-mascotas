@@ -25,6 +25,7 @@ const Form = ({title, agregarCita}) => {
           if(name.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || description.trim() === ''){
                changeCita({
                     ...cita,
+                    success: '',
                     error: "Todos los campos son obligatorios",
                })
                return null;

@@ -34,13 +34,13 @@ const Cita = ({cita, i, eliminarCita, traerCitas}) => {
 
      const submitCitaEdited = (id, editcita, e) => {
           e.preventDefault();
-          if (name.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || description.trim() === '') {
-               changeCitaEdited({
-                    ...citaedited,
-                    error: "Todos los campos son obligatorios",
-               })
-               return null;
-          }
+          // if (citaedited.name.trim() === '' || citaedited.propietario.trim() === '' || citaedited.fecha.trim() === '' ||  citaedited.hora.trim() === '' ||  citaedited.description.trim() === '') {
+          //      changeCitaEdited({
+          //           ...citaedited,
+          //           error: "Todos los campos son obligatorios",
+          //      })
+          //      return null;
+          // }
           updateCita(id, editcita)
      }
      const updateCita = async (id, editcita) => {
@@ -49,13 +49,15 @@ const Cita = ({cita, i, eliminarCita, traerCitas}) => {
                traerCitas();
                changeCitaEdited({
                       ...citaedited,
+                         error: '',
                          success: data.message
                })
           }catch(err){
                const {data} = err.response;
                changeCitaEdited({
                     ...citaedited,
-                    error: data.message
+                    success: '',
+                    error: data.message,
                })
           }
      }
