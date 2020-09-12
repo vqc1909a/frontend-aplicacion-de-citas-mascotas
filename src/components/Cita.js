@@ -61,14 +61,20 @@ const Cita = ({cita, i, eliminarCita, traerCitas}) => {
                })
           }
      }
-
+     const resetCitaEdited = () => {
+            changeCitaEdited({
+                 ...citaedited,
+                 success: '',
+                 error: '',
+            })
+     }
      return (
           <Fragment>
                <div className="card text-body my-3">
                     <div className="card-header d-flex justify-content-between align-items-start">
                          <h3 className="card-title">Cita N°{i}</h3>
                          <div>
-                              <span><i className="far fa-edit fa-2x mx-1" data-toggle="modal" data-target={`#editModal`+ i}></i></span>
+                              <span><i onClick={resetCitaEdited} className="far fa-edit fa-2x mx-1" data-toggle="modal" data-target={`#editModal`+ i}></i></span>
                               <span><i onClick={() => deleteCita(_id.toString())} className="fas fa-times fa-2x"></i></span>
                          </div>
                     </div>
