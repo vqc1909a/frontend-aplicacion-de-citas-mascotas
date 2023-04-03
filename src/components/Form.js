@@ -30,7 +30,7 @@ const Form = ({title, agregarCita}) => {
                     success: '',
                     error: "Todos los campos son obligatorios",
                })
-               return null;
+               return;
           }
           crearCita(cita, agregarCita);
      }

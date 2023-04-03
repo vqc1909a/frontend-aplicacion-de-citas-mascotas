@@ -7,7 +7,7 @@ const Citas = ({title, citas, eliminarCita, traerCitas}) => {
      return (
           <div className="col-md-6 text-white">
                <h2 className="font-weight-bolder text-uppercase text-center">{title}</h2>
-               {citas.length === 0 ? <div className="alert alert-danger">No tiene citas agregadas</div> : null}
+               {citas.length === 0 && <div className="alert alert-danger">No tiene citas agregadas</div>}
                <TransitionGroup className="citas" component={null}>
                     {citas.map((cita, i) => 
                          <CSSTransition

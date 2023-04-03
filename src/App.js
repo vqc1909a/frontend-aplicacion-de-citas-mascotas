@@ -20,6 +20,8 @@ function App() {
   // }, [citas])
 
   const [citas, changeCitas] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
 
   const agregarCita = (cita) => {
     changeCitas([
@@ -30,6 +32,7 @@ function App() {
     traerCitas();
     //!-----------------
   }
+
   const eliminarCita = (id) => {
     const newCitas = citas.filter(cita => cita._id.toString() !== id);
     changeCitas([
@@ -39,19 +42,29 @@ function App() {
     traerCitas();    
     //!-----------------
   }
+
+  const traerCitas = async () => {
+    try{
+      const {data} = await axios.get(process.env.REACT_APP_BACKEND_URL + '/citas');
+      changeCitas(data.message);
+      setIsError(false);
+      setMessage("");
+    }catch(err){
+      const {data} = err.response;
+      const message = data.message  || err.message;
+      setIsError(true);
+      setMessage(message)
+      console.log({
+        message,
+      })
+    }
+  }
+
   useEffect(()=>{
      traerCitas();
   },[]);
 
-  const traerCitas = async () => {
-        try{
-          const {data} = await axios.get(process.env.REACT_APP_BACKEND_URL + '/citas');
-          changeCitas(data.message);
-        }catch(err){
-          const {data} = err.response;
-          console.log(data.message);
-        }
-  }
+ 
 
   return (
     <Fragment>
@@ -61,7 +74,13 @@ function App() {
             <div className="container">
               <div className="row">
                 <Form title="Crear cita" agregarCita={agregarCita}/>
-                <Citas title="Administra tus citas" citas={citas} eliminarCita={eliminarCita} traerCitas={traerCitas} />
+                {
+                  !isError
+                  ?
+                  <Citas title="Administra tus citas" citas={citas} eliminarCita={eliminarCita} traerCitas={traerCitas} />
+                  :
+                  <div className="alert alert-danger">{message}</div>
+                }
               </div>
             </div>
         </section>
